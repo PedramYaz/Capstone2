@@ -1,0 +1,14 @@
+.Navbar-leaderboard {
+  background: none;
+  border: none;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: var(--color-fg);
+  margin: 0px;
+  padding: 0px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+}

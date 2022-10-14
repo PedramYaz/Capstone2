@@ -1,0 +1,19 @@
+.Navbar-about {
+  background: none;
+  border: none;
+  display: flex;
+  color: white;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-box-align: center;
+}
+
+.Popup-text {
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  padding: 5%;
+}

@@ -1,0 +1,30 @@
+.Navbar-instructions {
+  background: none;
+  border: none;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  color: var(--color-fg);
+  margin: 0px;
+  padding: 0px 12px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+/* .Popup-text {
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 0px;
+  margin-bottom: 2%;
+} */
+
+/* .Instructions-popup-info {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 24px;
+} */
