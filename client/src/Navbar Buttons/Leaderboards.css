@@ -12,3 +12,14 @@
   cursor: pointer;
   border-radius: 2px;
 }
+
+.Popup-text {
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  padding: 5%;
+}
+
+.Leaderboards-title {
+  margin-bottom: 12%;
+}

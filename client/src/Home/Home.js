@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Home.css";
 import Navbar from "../Navbar/Navbar";
-import { Link } from "react-router-dom";
+import SongSearch from "../MainPage/SongSearch";
+import SongLyrics from "../MainPage/SongLyrics";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import Timer from "../Components/Timer";
+// import GetSong from "../Components/GetSong";
+// import { Link } from "react-router-dom";
 
 /**
  * Main page
@@ -29,7 +34,12 @@ function Home() {
       <div className="Home-container">
         <Navbar />
         <p className="Home-instructions">Welcome to Lyricle</p>
+        <SongLyrics />
+        {/* <GetSong /> */}
+        <ProgressBar />
+        <SongSearch />
       </div>
+      <Timer />
     </div>
   );
 }

@@ -29,7 +29,7 @@ function About() {
         </svg>
       </button>
       <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <h2>About</h2>
+        <h2 className="About-title">About</h2>
         <p className="Popup-text">
           Each daily Lyricle features a snippet of lyrics from a popular song.
           Guess in as few tries as possible, and be sure to come back every day

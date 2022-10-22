@@ -1,0 +1,14 @@
+/* .progress-bar-bar {
+  width: 50%;
+  background-color: blue;
+  position: fixed;
+  bottom: 175px;
+  left: 25%;
+} */
+
+.progress-bar-bar {
+  width: 50%;
+  background-color: blue;
+  position: relative;
+  margin-bottom: 1%;
+}

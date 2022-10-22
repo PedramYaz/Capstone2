@@ -8,7 +8,7 @@ function SmileyFace() {
         <svg
           className="Navbar-svg"
           viewBox="0 0 200 200"
-          width="28"
+          width="24"
           height="28"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -16,7 +16,7 @@ function SmileyFace() {
             cx="100"
             cy="100"
             fill="yellow"
-            r="78"
+            r="90"
             stroke="black"
             strokeWidth="3"
           />

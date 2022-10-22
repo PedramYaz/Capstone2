@@ -12,19 +12,22 @@
   cursor: pointer;
   border-radius: 2px;
 }
-
-/* .Popup-text {
-  text-align: center;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  margin-top: 0px;
-  margin-bottom: 2%;
-} */
-
-/* .Instructions-popup-info {
+.Instructions-popup {
   display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  margin-bottom: 24px;
-} */
+}
+
+.Instructions-text {
+  display: flex;
+  /* text-align: center; */
+  /* margin-bottom: 5%; */
+  padding: 5%;
+}
+
+.child1 .child2 .child3 {
+  flex: 1;
+  /* display: inline-block; */
+}
+
+.Instructions-title {
+  margin-bottom: 10%;
+}

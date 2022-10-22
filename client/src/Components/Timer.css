@@ -1,0 +1,9 @@
+/* .Timer {
+  position: fixed;
+  bottom: 50px;
+  left: 45%;
+} */
+
+.Timer {
+  position: relative;
+}
