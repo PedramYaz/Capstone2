@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./SongSearchForm.css";
+import SkipButton from "../MainPage/SkipButton";
 
 const initialState = "";
 
@@ -34,12 +35,13 @@ function SongSearchForm({ searchFor }) {
         <div className="buttons">
           {/* DO I MAKE THIS A NEW FILE???? */}
 
-          <button type="submit" className="skip-button">
+          {/* <button type="reset" className="skip-button">
             <span className="button-text">
               {" "}
               <b>SKIP</b>
             </span>
-          </button>
+          </button> */}
+          <SkipButton />
           <button type="submit" className="search-button">
             <span className="button-text">
               {" "}

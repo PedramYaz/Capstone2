@@ -1,17 +1,28 @@
-const request = require("request");
+const express = require("express");
+const app = express();
 
-module.exports = {
-  /*
-   ** This method returns a promise
-   ** which gets resolved or rejected based
-   ** on the result from the API
-   */
-  make_API_call: function (url) {
-    return new Promise((resolve, reject) => {
-      request(url, { json: true }, (err, res, body) => {
-        if (err) reject(err);
-        resolve(body);
-      });
-    });
-  },
+const cors = require("cors");
+const corsOptions = {
+  origin: "http://localhost:3001",
 };
+app.use(cors(corsOptions));
+
+const songRoutes = require("./routes/songs");
+const ExpressError = require("./expressError");
+
+app.use(express.json());
+app.use("/songs", songRoutes);
+
+app.use(function (req, res, next) {
+  return new ExpressError("Not Found", 404);
+});
+
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+
+  return res.json({
+    error: err.message,
+  });
+});
+
+module.exports = app;
