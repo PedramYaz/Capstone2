@@ -5,6 +5,21 @@ function Timer() {
   const [time, setTime] = useState("");
 
   useEffect(() => {
+    let today = new Date();
+    let tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
+    setTimeout(function () {
+      localStorage.setItem("clicks", 0);
+    }, (today - tomorrow) * -1);
+    // }, 5000);
+    // console.log((today - tomorrow) * -1);
+    // setTimeout(function () {
+    //   localStorage.setItem("clicks", 0);
+    // }, 60 * 60 * 1000);
+  });
+
+  useEffect(() => {
     const interval = setInterval(() => {
       let today = new Date();
       let tomorrow = new Date(today);

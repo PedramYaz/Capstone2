@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Navbar from "../Navbar/Navbar";
-import SongSearch from "../MainPage/SongSearch";
+import SongSearchForm from "../MainPage/SongSearchForm";
 import SongLyrics from "../MainPage/SongLyrics";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Timer from "../Components/Timer";
-import GetSong from "../Components/GetSong";
+// import GetSong from "../Components/GetSong";
+import GameOver from "../Components/GameOver";
 // import { Link } from "react-router-dom";
 
 /**
@@ -27,16 +28,25 @@ import GetSong from "../Components/GetSong";
  */
 
 function Home() {
+  const [count, setCount] = useState(() =>
+    JSON.parse(localStorage.getItem("clicks"))
+  );
+
+  console.log(`state: ${count}`);
+  let counter = localStorage.getItem("clicks");
+  console.log(`localStorage: ${counter}`);
   return (
     <div className="Home">
       <div className="Home-container">
         <Navbar />
-        <p className="Home-instructions">Welcome to Lyricle</p>
+        {/* <p className="Home-instructions">Welcome to Lyricle</p> */}
         <br />
-        <SongLyrics />
-        <GetSong />
-        <ProgressBar />
-        <SongSearch />
+        <br />
+        <SongLyrics count={count} />
+        {/* <GetSong /> */}
+        <GameOver count={count} />
+        <ProgressBar count={count} />
+        <SongSearchForm setCount={setCount} count={count} />
       </div>
       <Timer />
     </div>

@@ -1,48 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import GameOver from "../Components/GameOver";
-import {
-  FirstLine,
-  SecondLine,
-  ThirdLine,
-  FourthLine,
-  FifthLine,
-} from "../Components/ShowSong";
+import useGet from "../hooks/useGet";
 import "./SongLyrics.css";
 
-function SongLyrics() {
-  let num = localStorage.getItem("clicks");
-  if (num === "1") {
-    return <FirstLine className="lyrics" />;
+function SongLyrics(props) {
+  let url = "http://localhost:3001/songs/lyrics-of-the-day";
+  const data = useGet(url);
+  if (data.isLoading) {
+    return <div>Loading...</div>;
   }
-  if (num === "2") {
-    return <SecondLine className="lyrics" />;
+  if (data.error) {
+    return <div>Sorry, something went wrong :(</div>;
   }
-  if (num === "3") {
-    return <ThirdLine className="lyrics" />;
-  }
-  if (num === "4") {
-    return <FourthLine className="lyrics" />;
-  }
-  if (num === "5") {
-    return <FifthLine className="lyrics" />;
-  }
+
+  // let lyrics = data.response.data;
+  // let actualLines = lyrics.split("\n").slice(0, 7);
+  const actualLines = ["one", "two", "three", "four", "five", "six"];
+
   return (
-    <div>
-      <GameOver />
-      GAME OVER
+    // ! BELOW (L 25-29) IS IF I WANT TO REPLACE THE LYRICS WITH THE GAME OVER
+    // ! POPUP,THE ONE THAT IS ACTIVE (L 31-33) IS FOR ADDING THE RESULTS AT
+    // ! THE BOTTOM.
+    <div className="song-lyrics">
+      {/* {props.count < 6 ? (
+        actualLines.map((lyric) => <div className="lyrics">{lyric}</div>)
+      ) : (
+        <GameOver />
+      )} */}
+
+      {actualLines.map((lyric) => (
+        <div className="lyrics">{lyric}</div>
+      ))}
     </div>
   );
 }
-// return (
-//   <>
-//     <div className="song-lyrics lyric-reveal">
-//       {/* <div className="lyrics lyrics-top">JOEE</div>
-//       <div className="lyrics">JOEE</div>
-//       <div className="lyrics">JOEE</div>
-//       <div className="lyrics">JOEE</div>
-//       <div className="lyrics">JOEE</div> */}
-//     </div>
-//   </>
-// );
 
 export default SongLyrics;
