@@ -7,7 +7,6 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import Timer from "../Components/Timer";
 // import GetSong from "../Components/GetSong";
 import GameOver from "../Components/GameOver";
-// import { Link } from "react-router-dom";
 
 /**
  * Main page
@@ -28,13 +27,10 @@ import GameOver from "../Components/GameOver";
  */
 
 function Home() {
-  const [count, setCount] = useState(() =>
+  const [count, setCount] = useState(
     JSON.parse(localStorage.getItem("clicks"))
   );
 
-  console.log(`state: ${count}`);
-  let counter = localStorage.getItem("clicks");
-  console.log(`localStorage: ${counter}`);
   return (
     <div className="Home">
       <div className="Home-container">

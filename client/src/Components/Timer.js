@@ -10,7 +10,7 @@ function Timer() {
     tomorrow.setDate(tomorrow.getDate() + 1);
     tomorrow.setHours(0, 0, 0, 0);
     setTimeout(function () {
-      localStorage.setItem("clicks", 0);
+      localStorage.setItem("clicks", 1);
     }, (today - tomorrow) * -1);
     // }, 5000);
     // console.log((today - tomorrow) * -1);

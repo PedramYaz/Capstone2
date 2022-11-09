@@ -1,0 +1,7 @@
+.suggestions{
+    cursor: pointer;
+}
+
+.active {
+    background: rgb(72, 70, 70);
+  }

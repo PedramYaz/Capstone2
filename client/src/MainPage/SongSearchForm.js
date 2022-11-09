@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SongSearchForm.css";
-// import SkipButton from "../MainPage/SkipButton";
+import Autocomplete from "./Autocomplete";
+import { autoCompleteData } from "./autoCompleteData";
 
 const initialState = "";
 
@@ -9,24 +10,32 @@ function SongSearchForm(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    searchFor(searchTerm.trim() || undefined);
-    setSearchTerm(searchTerm.trim());
-    setSearchTerm(initialState);
+    // searchFor(searchTerm.trim() || undefined);
+    // setSearchTerm(searchTerm.trim());
+    // setSearchTerm(initialState);
   }
 
   function addToCount() {
     props.setCount(props.count + 1);
+  }
+  useEffect(() => {
     localStorage.setItem("clicks", props.count);
-  }
-  function handleChange(evt) {
-    setSearchTerm(evt.target.value);
-  }
+  }, [props.count]);
+
+  // function handleChange(evt) {
+  //   setSearchTerm(evt.target.value);
+  // }
 
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-div">
-          <input
+          <Autocomplete
+            data={autoCompleteData}
+            value={searchTerm}
+            setValue={setSearchTerm}
+          />
+          {/* <input
             autoFocus
             className="search-bar"
             name="searchTerm"
@@ -34,16 +43,9 @@ function SongSearchForm(props) {
             value={searchTerm}
             onChange={handleChange}
             type="search"
-          />
+          /> */}
         </div>
         <div className="buttons">
-          {/* <button type="reset" className="skip-button">
-            <span className="button-text">
-              {" "}
-              <b>SKIP</b>
-            </span>
-          </button> */}
-          {/* <SkipButton /> */}
           <div>
             <button
               className="skip-button"
