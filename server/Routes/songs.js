@@ -14,6 +14,7 @@ const router = express.Router();
 
 const BASE_API_URL = "https://api.musixmatch.com/ws/1.1";
 const API_KEY = "652b4d81c154cc02257fae7e1febeb19";
+const API_KEY_2 = "7984a9b49eca8a49cab144190446828c";
 
 router.get("/top-charts", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

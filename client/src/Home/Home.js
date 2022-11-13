@@ -5,7 +5,7 @@ import SongSearchForm from "../MainPage/SongSearchForm";
 import SongLyrics from "../MainPage/SongLyrics";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Timer from "../Components/Timer";
-// import GetSong from "../Components/GetSong";
+import GetSong from "../Components/GetSong";
 import GameOver from "../Components/GameOver";
 
 /**
@@ -39,8 +39,8 @@ function Home() {
         <br />
         <br />
         <SongLyrics count={count} />
-        {/* <GetSong /> */}
-        <GameOver count={count} />
+        <GetSong count={count} />
+        {/* <GameOver count={count} /> */}
         <ProgressBar count={count} />
         <SongSearchForm setCount={setCount} count={count} />
       </div>

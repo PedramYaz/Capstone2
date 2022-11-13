@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SongSearchForm.css";
 import Autocomplete from "./Autocomplete";
-import { autoCompleteData } from "./autoCompleteData";
+import { officialInfo } from "./autoCompleteData";
 
 const initialState = "";
 
@@ -31,7 +31,7 @@ function SongSearchForm(props) {
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-div">
           <Autocomplete
-            data={autoCompleteData}
+            data={officialInfo}
             value={searchTerm}
             setValue={setSearchTerm}
           />
@@ -50,7 +50,7 @@ function SongSearchForm(props) {
             <button
               className="skip-button"
               onClick={addToCount}
-              disabled={props.count > 5 ? true : false}
+              disabled={props.count > 6 ? true : false}
             >
               <span className="button-text">
                 {" "}
@@ -62,7 +62,7 @@ function SongSearchForm(props) {
             type="submit"
             className="search-button"
             onClick={addToCount}
-            disabled={!searchTerm || props.count > 5 ? true : false}
+            disabled={!searchTerm || props.count > 6 ? true : false}
           >
             <span className="button-text">
               {" "}

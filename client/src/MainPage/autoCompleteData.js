@@ -1,23 +1,52 @@
 import React, { useState } from "react";
 import useGet from "../hooks/useGet";
 
-const autoCompleteData = [
-  "joe",
-  "apple",
-  "architect",
-  "arrange",
-  "ball",
-  "bat",
-  "bowl",
-  "car",
-  "cab",
-  "cabbage",
-  "carrot",
-  "doctor",
-  "dark",
-  "derranged",
-  "devious",
-];
+// ! make request to API top charts, link them together like `${song_name} - ${artist_name}`
+// ! Make a massive array of all these objects
+// ! use that for your autoCompleteData
+// ? for (let i = 0; i < response.data.message.body.track_list.length; i++ ){}
+// ?    let results = [];
+// ?    results.push([{key: response.data.message.body.track_list[i].track_name, value: response.data.message.body.track_list[i].artist_name}]);
+// ? }
+// ? setInfo(results)
+
+const officialInfo = [];
+
+const autoCompleteData = () => {
+  const [info, setInfo] = useState([]);
+  // const officialInfo = [];
+
+  let url = "http://localhost:3000/songs/top-charts";
+  axios.get(url).then((response) => {
+    setInfo(response.data);
+  });
+
+  for (let i = 0; i < info.message.body.track_list.length; i++) {
+    officialInfo.push([
+      info.message.body.track_list[i].track.track_name,
+      " - ",
+      info.message.body.track_list[i].track.artist_name,
+    ]);
+  }
+};
+
+// const autoCompleteData = [
+//   "joe",
+//   "apple",
+//   "architect",
+//   "arrange",
+//   "ball",
+//   "bat",
+//   "bowl",
+//   "car",
+//   "cab",
+//   "cabbage",
+//   "carrot",
+//   "doctor",
+//   "dark",
+//   "derranged",
+//   "devious",
+// ];
 
 const Songs = {
   message: {
@@ -232,4 +261,4 @@ function GetSongData() {
   axios.get;
 }
 
-export { autoCompleteData };
+export { officialInfo };
