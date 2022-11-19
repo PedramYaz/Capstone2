@@ -6,12 +6,11 @@ const AutoComplete = ({ data, value, setValue }) => {
   const [suggestionIndex, setSuggestionIndex] = useState(0);
   const [suggestionsActive, setSuggestionsActive] = useState(false);
   //   const [value, setValue] = useState("");
-
   const handleChange = (e) => {
     const query = e.target.value.toLowerCase();
     setValue(query);
     if (query.length > 1) {
-      const filterSuggestions = data.filter(
+      const filterSuggestions = data.data.filter(
         (suggestion) => suggestion.toLowerCase().indexOf(query) > -1
       );
       setSuggestions(filterSuggestions);

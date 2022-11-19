@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./SongSearchForm.css";
 import Autocomplete from "./Autocomplete";
-import { officialInfo } from "./autoCompleteData";
+import axios from "axios";
 
 const initialState = "";
+// let officialInfo = [];
 
 function SongSearchForm(props) {
   const [searchTerm, setSearchTerm] = useState(initialState);
+  const [info, setInfo] = useState([]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -14,6 +16,19 @@ function SongSearchForm(props) {
     // setSearchTerm(searchTerm.trim());
     // setSearchTerm(initialState);
   }
+
+  useEffect(() => {
+    let url = "http://localhost:3001/songs/auto-complete";
+    axios
+      .get(url)
+      .then((response) => {
+        setInfo(response);
+        console.log("set info");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   function addToCount() {
     props.setCount(props.count + 1);
@@ -31,7 +46,7 @@ function SongSearchForm(props) {
       <form className="form" onSubmit={handleSubmit}>
         <div className="input-div">
           <Autocomplete
-            data={officialInfo}
+            data={info}
             value={searchTerm}
             setValue={setSearchTerm}
           />

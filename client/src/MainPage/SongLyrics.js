@@ -6,44 +6,42 @@ import "./SongLyrics.css";
 import LoadingSpinner from "../Common/LoadingSpinner";
 
 function SongLyrics(props) {
-  const url = "http://localhost:3001/songs/lyrics-of-the-day";
   const [lines, setLines] = useState();
   const [isPending, setIsPending] = useState(true);
 
-  let today = new Date();
-  let tomorrow = new Date(today);
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(0, 0, 0, 0);
-  const timer = (today - tomorrow) * -1;
+  let date = new Date();
 
-  const getLyrics = useEffect(() => {
-    if (props.count === 0) {
-      axios
-        .get(url)
-        .then((response) => {
-          setLines(response.data);
-          localStorage.setItem("lyrics", response.data);
-        })
-        .catch((error) => {
-          return <div>Sorry, there was an error D: {error}</div>;
-        })
-        .finally(() => setIsPending(false));
-      // setLines(data);
+  useEffect(() => {
+    if (localStorage.date < date.toLocaleDateString()) {
+      let newLyrics = JSON.parse(localStorage.song_info);
+      localStorage.setItem("lyrics", newLyrics.lyrics);
+      setLines(localStorage.lyrics);
+      // axios
+      //   .get(url)
+      //   .then((response) => {
+      //     setLines(response.data.lyrics);
+      //     localStorage.setItem("lyrics", response.data.lyrics);
+      //   })
+      //   .catch((error) => {
+      //     return <div>Sorry, there was an error D: {error}</div>;
+      //   })
+      //   .finally(() => setIsPending(false));
     } else {
       setLines(localStorage.lyrics);
       setIsPending(false);
     }
   }, []);
 
-  setInterval(getLyrics, timer);
-
   if (isPending) {
     return <LoadingSpinner />;
   }
 
-  // let lyrics = lines.data;
-  let actualLines = lines.split("\n").slice(0, 6);
-  // let actualLines = lyrics.split("\n").slice(0, 7);
+  let actualLines = lines
+    .split("\n")
+    .filter((line) => {
+      return line !== "";
+    })
+    .slice(0, 6);
 
   // const actualLines = ["one", "two", "three", "four", "five", "six"];
 
@@ -53,7 +51,7 @@ function SongLyrics(props) {
     // ! THE BOTTOM.
     <div className="song-lyrics">
       {/* {props.count < 6 ? (
-        actualLines.map((lyric) => <div className="lyrics">{lyric}</div>)
+        actualLines.map((lyric, i) => <div className="lyrics key={i}">{lyric}</div>)
       ) : (
         <GameOver />
       )} */}
@@ -61,7 +59,7 @@ function SongLyrics(props) {
       {actualLines.map((lyric, i) => {
         if (i < props.count) {
           return (
-            <div className="lyrics" key="i">
+            <div className="lyrics" key={i}>
               {lyric}
             </div>
           );

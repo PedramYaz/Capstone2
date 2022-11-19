@@ -7,19 +7,23 @@ const GetSong = (props) => {
   const [name, setName] = useState();
   const [isPending, setIsPending] = useState(true);
 
-  let today = new Date();
-  let tomorrow = new Date(today);
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(0, 0, 0, 0);
-  const timer = (today - tomorrow) * -1;
+  // let today = new Date();
+  // let tomorrow = new Date(today);
+  // tomorrow.setDate(tomorrow.getDate() + 1);
+  // tomorrow.setHours(0, 0, 0, 0);
+  // const timer = (today - tomorrow) * -1;
 
-  const getInfo = useEffect(() => {
-    if (props.count === 0) {
+  let date = new Date();
+
+  useEffect(() => {
+    if (localStorage.date < date.toLocaleDateString()) {
+      localStorage.setItem("date", date.toLocaleDateString());
       axios
         .get(url)
         .then((response) => {
           setName(response.data);
           localStorage.setItem("song_info", JSON.stringify(response.data));
+          localStorage.setItem("lyrics", response.data.lyrics);
         })
         .catch((error) => {
           return <div>Sorry, there was an error D: {error}</div>;
@@ -32,7 +36,7 @@ const GetSong = (props) => {
     }
   }, []);
 
-  setInterval(getInfo, timer);
+  // setInterval(getInfo, timer);
 
   // useEffect(() => {
   //   if (props.count === 0) {
@@ -55,7 +59,7 @@ const GetSong = (props) => {
     return <LoadingSpinner />;
   }
 
-  console.log(name);
+  // console.log(name);
 
   if (props.count > 6) {
     return (
