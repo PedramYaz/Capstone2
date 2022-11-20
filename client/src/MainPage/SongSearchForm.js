@@ -11,10 +11,7 @@ function SongSearchForm(props) {
   const [info, setInfo] = useState([]);
 
   function handleSubmit(evt) {
-    evt.preventDefault();
-    // searchFor(searchTerm.trim() || undefined);
-    // setSearchTerm(searchTerm.trim());
-    // setSearchTerm(initialState);
+    setSearchTerm(initialState);
   }
 
   useEffect(() => {
@@ -30,16 +27,26 @@ function SongSearchForm(props) {
       });
   }, []);
 
-  function addToCount() {
+  function submit(evt) {
+    let guess = searchTerm.slice(0, searchTerm.indexOf(" -"));
+    let answer = JSON.parse(localStorage.song_info);
+
+    if (guess === answer.track_name) {
+      localStorage.setItem("clicks", 7);
+    } else {
+      evt.preventDefault();
+      setSearchTerm(initialState);
+      props.setCount(props.count + 1);
+    }
+  }
+
+  function skip(evt) {
+    evt.preventDefault();
     props.setCount(props.count + 1);
   }
   useEffect(() => {
     localStorage.setItem("clicks", props.count);
   }, [props.count]);
-
-  // function handleChange(evt) {
-  //   setSearchTerm(evt.target.value);
-  // }
 
   return (
     <div>
@@ -50,21 +57,12 @@ function SongSearchForm(props) {
             value={searchTerm}
             setValue={setSearchTerm}
           />
-          {/* <input
-            autoFocus
-            className="search-bar"
-            name="searchTerm"
-            placeholder="Search for the title or the artist"
-            value={searchTerm}
-            onChange={handleChange}
-            type="search"
-          /> */}
         </div>
         <div className="buttons">
           <div>
             <button
               className="skip-button"
-              onClick={addToCount}
+              onClick={skip}
               disabled={props.count > 6 ? true : false}
             >
               <span className="button-text">
@@ -76,7 +74,7 @@ function SongSearchForm(props) {
           <button
             type="submit"
             className="search-button"
-            onClick={addToCount}
+            onClick={submit}
             disabled={!searchTerm || props.count > 6 ? true : false}
           >
             <span className="button-text">

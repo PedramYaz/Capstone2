@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import GameOver from "../Components/GameOver";
-// import useGet from "../hooks/useGet";
-import axios from "axios";
 import "./SongLyrics.css";
 import LoadingSpinner from "../Common/LoadingSpinner";
 
@@ -16,16 +14,6 @@ function SongLyrics(props) {
       let newLyrics = JSON.parse(localStorage.song_info);
       localStorage.setItem("lyrics", newLyrics.lyrics);
       setLines(localStorage.lyrics);
-      // axios
-      //   .get(url)
-      //   .then((response) => {
-      //     setLines(response.data.lyrics);
-      //     localStorage.setItem("lyrics", response.data.lyrics);
-      //   })
-      //   .catch((error) => {
-      //     return <div>Sorry, there was an error D: {error}</div>;
-      //   })
-      //   .finally(() => setIsPending(false));
     } else {
       setLines(localStorage.lyrics);
       setIsPending(false);

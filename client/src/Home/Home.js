@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./Home.css";
 import Navbar from "../Navbar/Navbar";
 import SongSearchForm from "../MainPage/SongSearchForm";
 import SongLyrics from "../MainPage/SongLyrics";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import Timer from "../Components/Timer";
-import GetSong from "../Components/GetSong";
 import GameOver from "../Components/GameOver";
 
 /**
@@ -35,12 +33,10 @@ function Home() {
     <div className="Home">
       <div className="Home-container">
         <Navbar />
-        {/* <p className="Home-instructions">Welcome to Lyricle</p> */}
         <br />
         <br />
         <SongLyrics count={count} />
-        <GetSong count={count} />
-        {/* <GameOver count={count} /> */}
+        <GameOver count={count} />
         <ProgressBar count={count} />
         <SongSearchForm setCount={setCount} count={count} />
       </div>
@@ -50,6 +46,3 @@ function Home() {
 }
 
 export default Home;
-
-// How to make a button pop up with a description when hovered
-// <button title="About">About</button>

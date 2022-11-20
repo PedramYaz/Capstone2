@@ -56,8 +56,8 @@ router.get("/auto-complete", (req, res) => {
     .then((response) => {
       for (let i = 0; i < response.message.body.track_list.length; i++) {
         info.push(
-          `${response.message.body.track_list[i].track.artist_name} -
-          ${response.message.body.track_list[i].track.track_name}`
+          `${response.message.body.track_list[i].track.track_name} -
+          ${response.message.body.track_list[i].track.artist_name}`
         );
       }
       res.json(info);

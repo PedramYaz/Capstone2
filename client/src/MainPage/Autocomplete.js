@@ -5,7 +5,7 @@ const AutoComplete = ({ data, value, setValue }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [suggestionIndex, setSuggestionIndex] = useState(0);
   const [suggestionsActive, setSuggestionsActive] = useState(false);
-  //   const [value, setValue] = useState("");
+  // const [value, setValue] = useState("");
   const handleChange = (e) => {
     const query = e.target.value.toLowerCase();
     setValue(query);

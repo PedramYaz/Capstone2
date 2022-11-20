@@ -3,8 +3,13 @@ import "./Timer.css";
 
 function Timer() {
   const [time, setTime] = useState("");
+  let date = new Date();
 
   useEffect(() => {
+    //   if (localStorage.date < date.toLocaleDateString()) {
+    //     localStorage.setItem("clicks", 1);
+    //   }
+    // });
     let today = new Date();
     let tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -12,12 +17,7 @@ function Timer() {
     setTimeout(function () {
       localStorage.setItem("clicks", 1);
     }, (today - tomorrow) * -1);
-    // }, 5000);
-    // console.log((today - tomorrow) * -1);
-    // setTimeout(function () {
-    //   localStorage.setItem("clicks", 0);
-    // }, 60 * 60 * 1000);
-  });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,8 +38,7 @@ function Timer() {
   return (
     <div className="Timer">
       <h4>
-        {/* Next Lyricle in: <b>{timer}</b> */}
-        Next Lyricle in: {time}
+        Next Lyricle in: <b>{time}</b>
       </h4>
     </div>
   );
