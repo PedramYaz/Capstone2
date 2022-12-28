@@ -27,7 +27,10 @@
  * CSS
  * GIT
  * AJAX
- * PostgreSQL
 
 ![Image of LYRICLE-APP site](lyricle-app.png?raw=true "App Photo")
+
+#### What I would add if I had more time:
+ * A leaderboard list that showcases the daily scores average and where you landed for that day.
+ * Ability to go back and check the songs of the previous days and what you had missed.
 

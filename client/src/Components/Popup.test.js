@@ -1,11 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Navbar from "./Navbar";
+import Popup from "./Popup";
 
 it("render", function () {
-  render(<Navbar />);
+  render(<Popup />);
 });
-it("Matches snapshot", function () {
-  const { asFragment } = render(<Navbar />);
+it("matches snapshot", function () {
+  const { asFragment } = render(<Popup />);
   expect(asFragment()).toMatchSnapshot();
 });

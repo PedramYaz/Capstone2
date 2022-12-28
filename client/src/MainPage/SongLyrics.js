@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import GameOver from "../Components/GameOver";
 import "./SongLyrics.css";
 import LoadingSpinner from "../Common/LoadingSpinner";
 
@@ -14,6 +13,9 @@ function SongLyrics(props) {
       let newLyrics = JSON.parse(localStorage.song_info);
       localStorage.setItem("lyrics", newLyrics.lyrics);
       setLines(localStorage.lyrics);
+      // localStorage.setItem("clicks", 1);
+      localStorage.setItem("date", date.toLocaleDateString());
+      setIsPending(false);
     } else {
       setLines(localStorage.lyrics);
       setIsPending(false);
@@ -31,19 +33,8 @@ function SongLyrics(props) {
     })
     .slice(0, 6);
 
-  // const actualLines = ["one", "two", "three", "four", "five", "six"];
-
   return (
-    // ! BELOW (L 25-29) IS IF I WANT TO REPLACE THE LYRICS WITH THE GAME OVER
-    // ! POPUP,THE ONE THAT IS ACTIVE (L 31-33) IS FOR ADDING THE RESULTS AT
-    // ! THE BOTTOM.
     <div className="song-lyrics">
-      {/* {props.count < 6 ? (
-        actualLines.map((lyric, i) => <div className="lyrics key={i}">{lyric}</div>)
-      ) : (
-        <GameOver />
-      )} */}
-
       {actualLines.map((lyric, i) => {
         if (i < props.count) {
           return (
@@ -51,6 +42,8 @@ function SongLyrics(props) {
               {lyric}
             </div>
           );
+        } else {
+          return null;
         }
       })}
     </div>

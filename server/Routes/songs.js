@@ -16,6 +16,7 @@ const { response } = require("express");
 const router = express.Router();
 
 const BASE_API_URL = "https://api.musixmatch.com/ws/1.1";
+const API_KEY = "652b4d81c154cc02257fae7e1febeb19";
 
 router.get("/top-charts", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -28,7 +29,7 @@ router.get("/top-charts", (req, res) => {
   );
   apiHelper
     .make_API_call(
-      `${BASE_API_URL}/chart.tracks.get?chart_name=top&page=1&page_size=100&country=us&f_has_lyrics=1&apikey=${process.env.API_KEY}`
+      `${BASE_API_URL}/chart.tracks.get?chart_name=top&page=1&page_size=100&country=us&f_has_lyrics=1&apikey=${API_KEY}`
     )
     .then((response) => {
       res.json(response);
@@ -50,7 +51,7 @@ router.get("/auto-complete", (req, res) => {
   );
   apiHelper
     .make_API_call(
-      `${BASE_API_URL}/chart.tracks.get?chart_name=top&page=1&page_size=100&country=us&f_has_lyrics=1&apikey=${process.env.API_KEY}`
+      `${BASE_API_URL}/chart.tracks.get?chart_name=top&page=1&page_size=100&country=us&f_has_lyrics=1&apikey=${API_KEY}`
     )
     .then((response) => {
       for (let i = 0; i < response.message.body.track_list.length; i++) {
@@ -76,7 +77,7 @@ router.get("/choice-of-the-day", (req, res) => {
     "PUT, POST, GET, DELETE, PATCH"
   );
   let a = axios.get(
-    `${BASE_API_URL}/chart.tracks.get?chart_name=top&page=1&page_size=100&country=us&f_has_lyrics=1&apikey=${process.env.API_KEY}`
+    `${BASE_API_URL}/chart.tracks.get?chart_name=top&page=1&page_size=100&country=us&f_has_lyrics=1&apikey=${API_KEY}`
   );
   a.then((response) => {
     console.log(response);
@@ -87,7 +88,7 @@ router.get("/choice-of-the-day", (req, res) => {
       response.data.message.body.track_list[random].track.track_id;
     return axios
       .get(
-        `${BASE_API_URL}/track.lyrics.get?track_id=${trackId}&apikey=${process.env.API_KEY}`
+        `${BASE_API_URL}/track.lyrics.get?track_id=${trackId}&apikey=${API_KEY}`
       )
       .then((resp) => {
         res.json({

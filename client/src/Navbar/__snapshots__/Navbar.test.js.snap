@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Navbar"
+  >
+    <div
+      class="Navbar-info"
+    >
+      <div
+        class="Navbar-smiley-face"
+      >
+        <button
+          aria-label="Music Note"
+          class="Navbar-smiley-face"
+        >
+          <svg
+            class="Navbar-svg"
+            height="28"
+            viewBox="0 0 200 200"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="100"
+              cy="100"
+              fill="yellow"
+              r="90"
+              stroke="black"
+              stroke-width="3"
+            />
+            <g>
+              <circle
+                cx="61"
+                cy="82"
+                r="12"
+              />
+              <circle
+                cx="127"
+                cy="82"
+                r="12"
+              />
+            </g>
+            <path
+              d="m136.81 116.53c.69 26.17-64.11 42-81.52-.73"
+            />
+          </svg>
+        </button>
+      </div>
+      <button
+        aria-label="About"
+        class="Navbar-about"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+          />
+          <line
+            x1="12"
+            x2="12"
+            y1="16"
+            y2="12"
+          />
+          <line
+            x1="12"
+            x2="12.01"
+            y1="8"
+            y2="8"
+          />
+        </svg>
+      </button>
+      <h1
+        class="Navbar-title"
+      >
+        Lyricle
+      </h1>
+      <button
+        aria-label="Your Stats"
+        class="Navbar-leaderboard"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 20v-6M6 20V10M18 20V4"
+          />
+        </svg>
+      </button>
+      <button
+        aria-label="Instructions"
+        class="Navbar-instructions"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+          />
+          <path
+            d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+          />
+          <line
+            x1="12"
+            x2="12.01"
+            y1="17"
+            y2="17"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

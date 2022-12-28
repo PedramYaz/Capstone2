@@ -11,7 +11,6 @@ const GetSong = (props) => {
 
   useEffect(() => {
     if (localStorage.date < date.toLocaleDateString()) {
-      localStorage.setItem("date", date.toLocaleDateString());
       axios
         .get(url)
         .then((response) => {
@@ -28,18 +27,17 @@ const GetSong = (props) => {
       setIsPending(false);
     }
   }, []);
+
   if (isPending) {
     return <LoadingSpinner />;
   }
 
-  // if (props.count > 6) {
   return (
     <div>
       <h3>Song Name: {name.track_name}</h3>
       <h3>Artist Name: {name.artist_name}</h3>
     </div>
   );
-  // }
 };
 
 export default GetSong;
